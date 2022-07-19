@@ -4,5 +4,5 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 
 import jquery from "jquery"
-window.jquery = jquery
+window.jQuery = jquery
 window.$ = jquery
