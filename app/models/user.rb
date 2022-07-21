@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: { case_sensetive: false }
   validates_presence_of :name
+  validates_length_of :name, in: 3..40
   validates_presence_of :email
   validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
 
