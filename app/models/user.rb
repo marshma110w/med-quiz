@@ -12,15 +12,16 @@ class User < ApplicationRecord
   has_many :attempts, dependent: :destroy
 
   validates :email, uniqueness: { case_sensetive: false }
-  validates :name, presence: true
-  validates :email, presence: true
+  validates_presence_of :name
+  validates_presence_of :email
+  validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
 
   before_validation :downcase_email
 
   private
 
   def downcase_email
-    email.downcase!        
+    self.email.downcase! if self.email       
   end
 
 end
