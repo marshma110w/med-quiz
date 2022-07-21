@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_email] = @user.email
-      redirect_to root_url, notice: 'User saved'
+      redirect_to quiz_try_url, notice: 'User saved'
     else
       render :new
     end
