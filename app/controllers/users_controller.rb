@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_email] = @user.email
-      redirect_to quiz_try_url, notice: 'User saved'
+      session[:user_id] = @user.id
+      flash[:success] = "Registered successfuly!"
+      redirect_to quiz_try_url
     else
       render :new
     end
