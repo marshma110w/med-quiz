@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MedQuiz</title>
+    <title><%= full_title(yield(:page_title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_include_tag "rails-ujs" %>
   </head>
 
   <body>
-    <%= yield %>
+    <% unless yield(:page_title) == "Quiz" %>
+      <header class="p-3 bg-dark text-white">
+        <div class="container">
+          <nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><%= link_to 'Registration', new_user_path, class: 'nav-link px-2 text-white' %></li>
+              <li><%= link_to 'Log In', new_session_path, class: 'nav-link px-2 text-white' %></li>
+              <li><%= link_to 'Quiz', quiz_try_path, class: 'nav-link px-2 text-white' %></li>
+              <li><%= link_to 'Log Out', session_path, class: 'nav-link px-2 text-white', data: { method: :delete } %></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+    <% end %>
+
+    <main class="container">
+      <% flash.each do |k, v| %>
+        <%= tag.div v, class: "alert alert-#{k} mt-4", role: 'alert' %>
+      <% end %>
+
+      <%= yield %>
+    </main>
   </body>
 </html>
