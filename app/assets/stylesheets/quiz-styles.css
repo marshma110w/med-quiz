@@ -106,7 +106,7 @@ body{
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.4);
-    overflow-y: overlay; 
+    overflow: auto;
     padding-bottom: 30px;
 }
 
