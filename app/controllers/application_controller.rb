@@ -8,5 +8,26 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
+  def sign_in(user)
+    session[:user_id] = user.id
+  end 
+
+  def sign_out
+    session.delete :user_id
+    @current_user = nil
+  end
+
+  def require_no_authentication
+    return unless user_signed_in?
+    flash[:warning] = "You already signed in"
+    redirect_to quiz_try_path
+  end
+
+  def require_authentication
+    return if user_signed_in?
+    flash[:warning] = "You are not signed in"
+    redirect_to new_session_path
+  end
+
   helper_method :current_user, :user_signed_in?
 end
