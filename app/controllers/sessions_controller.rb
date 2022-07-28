@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       sign_in user
       flash[:success] = "welcome, #{user.name}!"
-      redirect_to quiz_try_path
+      redirect_to edit_user_path user
     else
       flash.now[:warning] = "Incorrect email/password!"
       render :new

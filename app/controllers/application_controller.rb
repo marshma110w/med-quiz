@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def require_no_authentication
     return unless user_signed_in?
     flash[:warning] = "You already signed in"
-    redirect_to quiz_try_path
+    redirect_to edit_user_path(current_user)
   end
 
   def require_authentication
