@@ -304,6 +304,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 1;
 }
 .modal>div{
     width: 90%;    
@@ -661,6 +662,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: 2;
 }
 .simple-modal-body{
     background-color: rgb(196, 247, 194);
@@ -672,6 +674,7 @@ body{
     -moz-border-radius: 10px;
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
+    z-index: 2;
 }
 /* END SIMPLE MODAL */
  
