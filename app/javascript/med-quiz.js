@@ -608,7 +608,7 @@ function finishModule() {
             }
 
             xhr.onerror = function() {
-                alert("Запрос не удался");
+                alert(`Запрос не удался ${xhr.status}: ${xhr.statusText}`);
             }
         
 
