@@ -53,6 +53,9 @@ gem "activeadmin"
 gem "inherited_resources"
 gem "devise"
 
+# gem for icons
+gem "font-awesome-sass"
+
 # Use Sass to process CSS
 gem "sassc-rails"
 
