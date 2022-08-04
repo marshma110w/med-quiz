@@ -1,6 +1,3 @@
-console.log("Script is working")
-
-
 var inputParametres = {
 
     //anamnesis input parametres
@@ -68,6 +65,7 @@ var inputParametres = {
         ]
     ],
     countQuestions: 0,
+    askedQuestionsCount: 0,
 
     //physical research input parametres
     openedPhysicalResearchModule: false,
@@ -169,6 +167,7 @@ function dialogController() {
         inputParametres.countQuestions = questions.length
         question.addEventListener("click", async event => {
             var numberQuestion = question.getAttribute("number")
+            inputParametres.askedQuestionsCount += 1
             question.remove()
             addDoctorMesageInChart(questionBlock[numberQuestion].doctor)
             addInAnamnesis(questionBlock[numberQuestion].patient, questionBlock[numberQuestion].eng_category, questionBlock[numberQuestion].ru_category)
@@ -596,10 +595,29 @@ function finishModule() {
             xhr.setRequestHeader("Accept", "application/json");
             xhr.setRequestHeader("Content-Type", "application/json");
 
+            outParams = {
+                askedQuestionsCount: inputParametres.askedQuestionsCount,
+                diagnosisMain: document.querySelector('#' + inputParametres.diagnosisMain[0]).value,
+                diagnosisComplications: [],
+                diagnosisAccompanyingIllnesses: [],
+                openedEkg: inputParametres.openedEkg,
+                openedGlukometr: inputParametres.openedGlukometr,
+                openedPulkoksimetr: inputParametres.openedPulkoksimetr,
+                openedTroponinovyjTest: inputParametres.openedTroponinovyjTest,
+                treatmentMedicate: inputParametres.treatmentMedicate,
+                treatmentNonMedicate: inputParametres.treatmentNonMedicate
+            }
 
-            xhr.send(JSON.stringify(inputParametres))
+            inputParametres.diagnosisComplications.forEach(complication => {
+                outParams.diagnosisComplications.push(document.querySelector('#' + complication).value)
+            })
+            inputParametres.diagnosisAccompanyingIllnesses.forEach(accompanyingIllnesses => {
+                outParams.diagnosisAccompanyingIllnesses.push(document.querySelector('#' + accompanyingIllnesses).value)
+            })
 
-            xhr.onload = function(){
+            xhr.send(JSON.stringify(outParams))
+
+            /*xhr.onload = function(){
                 if (xhr.status != 200) {
                     alert(`Ошибка ${xhr.status}: ${xhr.statusText}`)
                 } else {
@@ -609,15 +627,11 @@ function finishModule() {
 
             xhr.onerror = function() {
                 alert(`Запрос не удался ${xhr.status}: ${xhr.statusText}`);
-            }
-        
+            }*/
 
-            console.log('Ответ принят')
-
-            document.querySelector("button.close-finish").addEventListener("click", event => {
-
-                location.reload()
-            })
+            // document.querySelector("button.close-finish").addEventListener("click", event => {
+            //     location.reload()
+            // })
         }
     })
 }

@@ -45,16 +45,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_073721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "asked_questions_count", null: false
-    t.boolean "physical_research_opened", null: false
-    t.boolean "opened_pulkoksimetr", null: false
-    t.boolean "opened_ekg", null: false
-    t.boolean "opened_glukometr", null: false
-    t.boolean "opened_trop_test", null: false
+    t.boolean "opened_pulkoksimetr"
+    t.boolean "opened_ekg"
+    t.boolean "opened_glukometr"
+    t.boolean "opened_trop_test"
     t.string "main_diagnosis", null: false
-    t.string "diagnosis_complications", null: false, array: true
-    t.string "diagnosis_accompanying_illnesses", null: false, array: true
-    t.jsonb "treatment_medicate", null: false
-    t.string "treatment_non_medicate", null: false, array: true
+    t.string "diagnosis_complications", array: true
+    t.string "diagnosis_accompanying_illnesses", array: true
+    t.jsonb "treatment_medicate"
+    t.string "treatment_non_medicate", array: true
     t.index ["user_id"], name: "index_attempts_on_user_id"
   end
 
