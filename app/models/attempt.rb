@@ -2,11 +2,20 @@
 #
 # Table name: attempts
 #
-#  id         :bigint           not null, primary key
-#  result     :json
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint
+#  id                               :bigint           not null, primary key
+#  asked_questions_count            :integer          not null
+#  diagnosis_accompanying_illnesses :string           is an Array
+#  diagnosis_complications          :string           is an Array
+#  main_diagnosis                   :string           not null
+#  opened_ekg                       :boolean
+#  opened_glukometr                 :boolean
+#  opened_pulkoksimetr              :boolean
+#  opened_trop_test                 :boolean
+#  treatment_medicate               :jsonb
+#  treatment_non_medicate           :string           is an Array
+#  created_at                       :datetime         not null
+#  updated_at                       :datetime         not null
+#  user_id                          :bigint
 #
 # Indexes
 #
@@ -14,4 +23,6 @@
 #
 class Attempt < ApplicationRecord
     belongs_to :user
+
+    validates_presence_of %i[asked_questions_count main_diagnosis]
 end
