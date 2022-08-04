@@ -13,6 +13,7 @@
 #
 # Configure Using Gemfile
 # gem "pg"
+# psql connection: psql -h localhost -p 5432 -d med_quiz_development -U oppy
 #
 default: &default
   adapter: postgresql
@@ -20,7 +21,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: michael
+  username: oppy
   password: <%= ENV['MEDQUIZ_DATABASE_PASSWORD'] %>
 
 development:

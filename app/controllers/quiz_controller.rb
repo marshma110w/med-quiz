@@ -4,6 +4,7 @@ class QuizController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :user_answer
 
   def try
+    
   end
 
   def user_answer
@@ -31,6 +32,15 @@ class QuizController < ApplicationController
     end
 
   end
+  
+#
+#  id         :bigint           not null, primary key
+#  result     :json
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :bigint/dev
+
+#
 end
 
 # Need to know this:
