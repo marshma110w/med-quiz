@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_03_073721) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_18_092724) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,12 +44,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_073721) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "asked_questions_count", null: false
+    t.integer "asked_questions_count", default: 0, null: false
+    t.integer "integer", default: 0, null: false
     t.boolean "opened_pulkoksimetr"
     t.boolean "opened_ekg"
     t.boolean "opened_glukometr"
     t.boolean "opened_trop_test"
-    t.string "main_diagnosis", null: false
+    t.string "main_diagnosis", default: "", null: false
     t.string "diagnosis_complications", array: true
     t.string "diagnosis_accompanying_illnesses", array: true
     t.jsonb "treatment_medicate"
@@ -63,6 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_073721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

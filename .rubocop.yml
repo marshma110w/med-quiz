@@ -11,3 +11,18 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 50
+
+Metrics/BlockLength:
+  Max: 50
+
+Layout/LineLength:
+  Max: 150
+
+Rails/I18nLocaleTexts:
+  Enabled: false

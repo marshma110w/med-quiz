@@ -9,7 +9,11 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
-require "test_helper"
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   # test "the truth" do

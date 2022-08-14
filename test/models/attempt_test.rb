@@ -3,10 +3,11 @@
 # Table name: attempts
 #
 #  id                               :bigint           not null, primary key
-#  asked_questions_count            :integer          not null
+#  asked_questions_count            :integer          default(0), not null
 #  diagnosis_accompanying_illnesses :string           is an Array
 #  diagnosis_complications          :string           is an Array
-#  main_diagnosis                   :string           not null
+#  integer                          :integer          default(0), not null
+#  main_diagnosis                   :string           default(""), not null
 #  opened_ekg                       :boolean
 #  opened_glukometr                 :boolean
 #  opened_pulkoksimetr              :boolean
@@ -21,7 +22,7 @@
 #
 #  index_attempts_on_user_id  (user_id)
 #
-require "test_helper"
+require 'test_helper'
 
 class AttemptTest < ActiveSupport::TestCase
   # test "the truth" do

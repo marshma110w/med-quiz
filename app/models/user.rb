@@ -9,6 +9,10 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
 class User < ApplicationRecord
   attr_accessor :old_password
 
@@ -19,15 +23,14 @@ class User < ApplicationRecord
   validate :password_presence
   validate :correct_old_password, on: :update, if: -> { password.present? }
   validates :password, confirmation: true, allow_blank: true,
-    length: {minimum: 8, maximum: 70}
+                       length: { minimum: 8, maximum: 70 }
   validate :password_complexity
 
-
   validates :email, uniqueness: { case_sensetive: false }
-  validates_presence_of :name
-  validates_length_of :name, in: 3..40
-  validates_presence_of :email
-  validates_format_of :email, with: URI::MailTo::EMAIL_REGEXP
+  validates :name, presence: true
+  validates :name, length: { in: 3..40 }
+  validates :email, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   before_validation :downcase_email
 
@@ -40,18 +43,19 @@ class User < ApplicationRecord
   end
 
   def password_presence
-    errors.add(:password, :blank) unless password_digest.present?
+    errors.add(:password, :blank) if password_digest.blank?
   end
 
   def password_complexity
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
 
-    errors.add :password, 'complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase, 1 digit and 1 special character'
+    errors.add :password,
+               'complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase, 1 lowercase,
+               1 digit and 1 special character'
   end
 
   def downcase_email
-    self.email.downcase! if self.email       
+    email&.downcase!
   end
-
 end

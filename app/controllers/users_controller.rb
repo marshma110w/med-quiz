@@ -19,12 +19,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update user_params
-      flash[:success] = "Profile updated"
+      flash[:success] = 'Profile updated'
       redirect_to edit_user_path(@user)
     else
       render :edit

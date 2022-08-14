@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'quiz/try'
   root 'users#new'
-  
-  
+
   resources :users, only: %i[create new edit update]
   resource :session, only: %i[new create destroy]
 
