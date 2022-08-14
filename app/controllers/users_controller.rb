@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      sign_in @user
+      log_in @user
       flash[:success] = "Welcome back, #{@user.name}!"
       redirect_to quiz_try_url
     else
