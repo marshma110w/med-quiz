@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def sign_in(user)
+  def log_in(user)
     session[:user_id] = user.id
   end
 
@@ -18,15 +18,14 @@ class ApplicationController < ActionController::Base
 
   def require_no_authentication
     return unless user_signed_in?
-
-    flash[:warning] = 'You already signed in'
+    flash[:warning] = "Вы уже вошли"
     redirect_to edit_user_path(current_user)
   end
 
   def require_authentication
     return if user_signed_in?
+    flash[:warning] = "Вы не вошли"
 
-    flash[:warning] = 'You are not signed in'
     redirect_to new_session_path
   end
 

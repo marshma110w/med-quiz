@@ -23,25 +23,9 @@ class QuizController < ApplicationController
 
     if attempt.valid?
       attempt.save
-      render plain: 'Result saved', status: :ok
+      render plain: "Результат сохранен", status: 200
     else
       render plain: attempt.errors.to_a.join(', '), status: :unprocessable_entity
     end
   end
 end
-
-# Need to know this:
-
-# asked_questions_count: int
-# physical_research_opened: bool
-# opened_pulskoksimetr: bool
-# opened_ekg: bool
-# opened_glukometr: bool
-# opened_trop_test: bool
-
-# main_diagnosis: string
-# diagnosis_complications: arr
-# diagnosis_accompanying_illnesses: arr
-
-# treatment_medicate: json
-# treatment_non_medicate: arr
