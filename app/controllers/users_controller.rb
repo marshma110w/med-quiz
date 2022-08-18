@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Добро пожаловать, #{@user.name}!"
+
       redirect_to quiz_try_url
     else
       render :new
