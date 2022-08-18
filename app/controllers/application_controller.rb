@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id].present?
   end
@@ -10,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def log_in(user)
     session[:user_id] = user.id
-  end 
+  end
 
   def sign_out
     session.delete :user_id
@@ -26,6 +25,7 @@ class ApplicationController < ActionController::Base
   def require_authentication
     return if user_signed_in?
     flash[:warning] = "Вы не вошли"
+
     redirect_to new_session_path
   end
 

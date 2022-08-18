@@ -1,20 +1,21 @@
 class ChangeAttemptsResult < ActiveRecord::Migration[7.0]
   def change
-    remove_column :attempts, :result, :json
-    
-    add_column :attempts, :asked_questions_count, :integer, null: false
-    
-    add_column :attempts, :opened_pulkoksimetr, :boolean
-    add_column :attempts, :opened_ekg, :boolean
-    add_column :attempts, :opened_glukometr, :boolean
-    add_column :attempts, :opened_trop_test, :boolean
+    change_table :attempts, bulk: true do |t|
+      t.remove :result, type: :json
 
-    add_column :attempts, :main_diagnosis, :string, null: false
-    add_column :attempts, :diagnosis_complications, :string, array: true
-    add_column :attempts, :diagnosis_accompanying_illnesses, :string, array: true
+      t.integer :asked_questions_count, :integer, null: false, default: 0
 
-    add_column :attempts, :treatment_medicate, :jsonb
-    add_column :attempts, :treatment_non_medicate, :string, array: true
-    
+      t.boolean :opened_pulkoksimetr
+      t.boolean :opened_ekg
+      t.boolean :opened_glukometr
+      t.boolean :opened_trop_test
+
+      t.string :main_diagnosis, null: false, default: ''
+      t.string :diagnosis_complications, array: true
+      t.string :diagnosis_accompanying_illnesses, array: true
+
+      t.jsonb :treatment_medicate
+      t.string :treatment_non_medicate, array: true
+    end
   end
 end
