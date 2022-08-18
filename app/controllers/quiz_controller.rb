@@ -32,29 +32,4 @@ class QuizController < ApplicationController
     end
 
   end
-  
-#
-#  id         :bigint           not null, primary key
-#  result     :json
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint/dev
-
-#
 end
-
-# Need to know this:
-
-# asked_questions_count: int
-# physical_research_opened: bool
-# opened_pulskoksimetr: bool
-# opened_ekg: bool
-# opened_glukometr: bool
-# opened_trop_test: bool
-
-# main_diagnosis: string
-# diagnosis_complications: arr
-# diagnosis_accompanying_illnesses: arr
-
-# treatment_medicate: json
-# treatment_non_medicate: arr

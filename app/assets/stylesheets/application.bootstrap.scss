@@ -1,4 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons'; 
 
 .field_with_errors {
     .form_control {
@@ -8,8 +9,3 @@
         color: $red;
     }
 }
-
-@import 'bootstrap-icons/font/bootstrap-icons'; 
-@import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "@fortawesome/fontawesome-free/scss/solid.scss";
-@import "@fortawesome/fontawesome-free/scss/brands.scss";
