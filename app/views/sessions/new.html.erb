@@ -1,6 +1,6 @@
 <% provide :page_title, 'Log In' %>
 
-<h1 class="mb-4">Log In</h1>
+<h1 class="mb-4">Войти</h1>
 
 <%= form_with url: session_path, data: { turbo: false } do |f| %>
   <div class="mb-3 row">
@@ -23,5 +23,5 @@
     </div>
   </div>
 
-  <%= f.submit "Sign In!", class: 'btn btn-primary btn-lg' %>
+  <%= f.submit "Войти", class: 'btn btn-primary btn-lg' %>
 <% end %>

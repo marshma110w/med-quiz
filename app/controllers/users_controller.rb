@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome back, #{@user.name}!"
+      sign_in @user
+      flash[:success] = "Добро пожаловать, #{@user.name}!"
+
       redirect_to quiz_try_url
     else
       render :new
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update user_params
-      flash[:success] = "Profile updated"
+      flash[:success] = "Профиль обновлен"
       redirect_to edit_user_path(@user)
     else
       render :edit
