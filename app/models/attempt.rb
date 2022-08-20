@@ -26,48 +26,6 @@ class Attempt < ApplicationRecord
 
   validates :asked_questions_count, :main_diagnosis, presence: true
 
-  self.correct_ilnesses = ['Сахарный диабет инсулиннезависимый',
-                           'Гипертоническая болезнь',
-                           'Остеохондроз позвоночника']
-
-  self.correct_main_diagnosis = 'Острый коронарный синдром с подъёмом ST'
-
-  self.correct_treatment_medicate = [
-    {
-      name: 'Анальгетики',
-      drugs: %w[Морфин Фентанил],
-      drugsType: 'or',
-      drugsCount: 2
-    },
-    {
-      name: 'Нитраты',
-      drugs: ['Нитроглицерин', 'Изосорбид динитрат'],
-      drugsType: 'or',
-      drugsCount: 2
-    },
-    {
-      name: 'Средства, влияющие на свертывание крови',
-      drugs: ['Гепарин', 'Ацетилсалициловая кислота', 'Клопидогрел'],
-      drugsType: 'and',
-      drugsCount: 3
-    },
-    {
-      name: 'Тромболитики',
-      drugs: %w[Алтеплаза Тенектеплаза Фортелизин],
-      drugsType: 'onlyOne',
-      drugsCount: 3
-    },
-    {
-      name: 'Антиаритмические средства',
-      drugs: ['Метопролол'],
-      drugsType: 'and',
-      drugsCount: 1
-    }
-  ]
-
-  self.correct_treatment_non_medicate = ['Внутривенный доступ',
-                                         'Оксигенотерапия']
-
   def main_diagnosis_correct?
     main_diagnosis == correct_main_diagnosis
   end
@@ -88,7 +46,7 @@ class Attempt < ApplicationRecord
     content_equal?(treatment_non_medicate, correct_treatment_non_medicate)
   end
 
-  def instrumental_researches
+  def instrumental_researches_opened
     [opened_ekg, opened_glukometr, opened_pulkoksimetr, opened_trop_test]
   end
 
@@ -96,5 +54,55 @@ class Attempt < ApplicationRecord
 
   def content_equal?(a, b)
     (a - b).empty? && (b - a).empty?
+  end
+
+  def correct_ilnesses
+    ['Сахарный диабет инсулиннезависимый',
+     'Гипертоническая болезнь',
+     'Остеохондроз позвоночника']
+  end
+
+  def correct_main_diagnosis
+    'Острый коронарный синдром с подъёмом ST'
+  end
+
+  def correct_treatment_medicate
+    [
+      {
+        name: 'Анальгетики',
+        drugs: %w[Морфин Фентанил],
+        drugsType: 'or',
+        drugsCount: 2
+      },
+      {
+        name: 'Нитраты',
+        drugs: ['Нитроглицерин', 'Изосорбид динитрат'],
+        drugsType: 'or',
+        drugsCount: 2
+      },
+      {
+        name: 'Средства, влияющие на свертывание крови',
+        drugs: ['Гепарин', 'Ацетилсалициловая кислота', 'Клопидогрел'],
+        drugsType: 'and',
+        drugsCount: 3
+      },
+      {
+        name: 'Тромболитики',
+        drugs: %w[Алтеплаза Тенектеплаза Фортелизин],
+        drugsType: 'onlyOne',
+        drugsCount: 3
+      },
+      {
+        name: 'Антиаритмические средства',
+        drugs: ['Метопролол'],
+        drugsType: 'and',
+        drugsCount: 1
+      }
+    ]
+  end
+
+  def correct_treatment_non_medicate
+    ['Внутривенный доступ',
+     'Оксигенотерапия']
   end
 end
