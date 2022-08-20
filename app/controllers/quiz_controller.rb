@@ -23,7 +23,7 @@ class QuizController < ApplicationController
 
     if attempt.valid?
       attempt.save
-      render plain: "Результат сохранен", status: 200
+      render plain: 'Результат сохранен', status: :ok
     else
       render plain: attempt.errors.to_a.join(', '), status: :unprocessable_entity
     end

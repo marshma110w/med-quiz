@@ -13,7 +13,7 @@ Style/Documentation:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 20
+  Max: 40
 
 Metrics/AbcSize:
   Max: 50
@@ -23,6 +23,9 @@ Metrics/BlockLength:
 
 Layout/LineLength:
   Max: 150
+
+Naming/MethodParameterName:
+  Enabled: false
 
 Rails/I18nLocaleTexts:
   Enabled: false
