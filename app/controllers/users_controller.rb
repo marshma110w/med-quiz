@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update user_params
-      flash[:success] = "Профиль обновлен"
+      flash[:success] = 'Профиль обновлен'
       redirect_to edit_user_path(@user)
     else
       render :edit

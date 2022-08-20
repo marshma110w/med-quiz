@@ -6,7 +6,6 @@
 #  asked_questions_count            :integer          default(0), not null
 #  diagnosis_accompanying_illnesses :string           is an Array
 #  diagnosis_complications          :string           is an Array
-#  integer                          :integer          default(0), not null
 #  main_diagnosis                   :string           default(""), not null
 #  opened_ekg                       :boolean
 #  opened_glukometr                 :boolean

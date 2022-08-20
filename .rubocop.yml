@@ -24,5 +24,8 @@ Metrics/BlockLength:
 Layout/LineLength:
   Max: 150
 
+Naming/MethodParameterName:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false
