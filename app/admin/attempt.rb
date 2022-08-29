@@ -1,21 +1,21 @@
 ActiveAdmin.register Attempt do
   
-    index do
+    index(:row_class => -> record {'correct_answer' if record.main_diagnosis_correct?}) do
       selectable_column
       id_column
+      column :user_id
+      column :main_diagnosis
       column :asked_questions_count
       column :diagnosis_accompanying_illnesses
       column :diagnosis_complications
-      column :main_diagnosis
       column :opened_ekg
       column :opened_glukometr
       column :opened_pulkoksimetr
       column :opened_pulkoksimetr
       column :opened_trop_test
-      column :treatment_medicate
+      list_column :treatment_medicate
       column :treatment_non_medicate
       column :created_at
-      column :user_id
     end
   
     filter :user_id

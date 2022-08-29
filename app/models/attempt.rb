@@ -26,6 +26,7 @@ class Attempt < ApplicationRecord
 
   validates :asked_questions_count, :main_diagnosis, presence: true
 
+
   def main_diagnosis_correct?
     main_diagnosis == correct_main_diagnosis
   end
