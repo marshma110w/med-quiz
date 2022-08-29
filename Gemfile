@@ -50,6 +50,7 @@ gem 'bootsnap', require: false
 # gems for active admin
 
 gem 'activeadmin'
+gem 'activeadmin_addons'
 gem 'devise'
 gem 'inherited_resources'
 
