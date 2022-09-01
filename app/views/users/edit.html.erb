@@ -1,3 +1,67 @@
-<% provide :page_title, "Index" %>
-<%= render 'form' %>
+<% provide :page_title, "Редактировать" %>
+<%= stylesheet_link_tag	'profile_styles', media: 'all', 'data-turbolinks-track' => true %>
 
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <span class="font-weight-bold"><%= @user.name %></span>
+            </div>
+        </div>
+        <div class="col-md-7 border-right">
+            <%= form_with model: @user do |f| %>
+            
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="text-right">Редактировать профиль</h2>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <!--
+                            <label class="labels">Имя</label>
+                            <input type="text" class="form-control" placeholder="ToDo" value="">
+                            -->
+                            <%= f.label :name, 'Имя', class: "labels" %>
+                            <%= f.text_field :name, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :email, 'Адрес электронной почты', class: "labels" %>
+                            <%= f.text_field :email, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :place_of_work, 'Место работы', class: "labels" %>
+                            <%= f.text_field :place_of_work, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :education, 'Образование', class: "labels" %>
+                            <%= f.text_field :education, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :phone_number, 'Номер телефона', class: "labels" %>
+                            <%= f.text_field :phone_number, class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="my-3 col-5 offset-4">
+                    <%= f.submit 'Сохранить изменения', class: 'btn btn-primary' %>
+                </div>
+            <% end %>
+        </div>
+
+    </div>
+    <!--
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="p-3 py-2 my-2 border border-danger rounded">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Сменить пароль</span></div><br>
+                <div class="col-md-12"><label class="labels">Старый пароль</label><input type="text" class="form-control"value=""></div>
+                <div class="col-md-12"><label class="labels">Новый пароль</label><input type="text" class="form-control"value=""></div>
+                <div class="col-md-12"><label class="labels">Подтвержение нового пароля</label><input type="text" class="form-control" value=""></div>
+                <div class="mt-2 text-center"><button class="btn btn-danger" type="button">Изменить</button></div>
+            </div>
+        </div>
+    </div>
+    -->
+</div>
