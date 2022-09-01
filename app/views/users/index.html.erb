@@ -1,64 +1,63 @@
+<% provide :page_title, "Профиль" %>
 <%= stylesheet_link_tag	'profile_styles', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <span class="font-weight-bold"><%= @user.name %></span>
+            </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-7 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+                    <h2 class="text-right">Профиль</h2>
                 </div>
                 <div class="row mt-3">
                     <div class="col-md-12">
                         <label class="labels">Имя</label>
-                        <h3>ToDo</h3>
+                        <h3><%= @user.name %></h3>
                     </div>
                     <div class="col-md-12">
                         <label class="labels">Адрес электронной почты</label>
-                        <h3>ToDo</h3>
+                        <h3><%= @user.email %></h3>
                     </div>
                     <div class="col-md-12">
-                        <label class="labels">Address Line 2</label>
-                        <input type="text" class="form-control" placeholder="enter address line 2" value="">
-                        </div>
-                    <div class="col-md-12">
-                        <label class="labels">Postcode</label>
-                        <input type="text" class="form-control" placeholder="enter address line 2" value="">
+                        <label class="labels">Место работы</label>
+                        <h3><%= @user.place_of_work.presence || '-' %></h3>
                     </div>
                     <div class="col-md-12">
-                        <label class="labels">State</label>
-                        <input type="text" class="form-control" placeholder="enter address line 2" value="">
+                        <label class="labels">Образование</label>
+                        <h3><%= @user.education.presence || '-' %></h3>
                     </div>
                     <div class="col-md-12">
-                        <label class="labels">Area</label>
-                        <input type="text" class="form-control" placeholder="enter address line 2" value="">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Email ID</label>
-                        <input type="text" class="form-control" placeholder="enter email id" value="">
-                    </div>
-                    <div class="col-md-12">
-                        <label class="labels">Education</label>
-                        <input type="text" class="form-control" placeholder="education" value="">
+                        <label class="labels">Номер телефона</label>
+                        <h3><%= @user.phone_number.presence || '-' %></h3>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                    <div class="col-md-6"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+            <br/>
+            <div class="my-3 col-5 offset-4">
+                <%= button_to [:edit, @user], class: 'btn btn-primary profile-button', method: :get do %>
+                    Изменить профиль
+                <% end %>
             </div>
         </div>
     </div>
+        <!--
+        <div class="col-md-4">
+            <div class="p-3 py-2 my-2 border border-danger rounded">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Сменить пароль</span></div><br>
+                <div class="col-md-12"><label class="labels">Старый пароль</label><input type="text" class="form-control"value=""></div>
+                <div class="col-md-12"><label class="labels">Новый пароль</label><input type="text" class="form-control"value=""></div>
+                <div class="col-md-12"><label class="labels">Подтвержение нового пароля</label><input type="text" class="form-control" value=""></div>
+                <div class="mt-2 text-center"><button class="btn btn-danger" type="button">Изменить</button></div>
+            </div>
+        </div>
+        -->
+    </div>
+    <div class="row">
+        
 </div>
-</div>
-</div>
+

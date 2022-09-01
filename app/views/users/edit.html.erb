@@ -1,75 +1,67 @@
-<% provide :page_title, "Index" %>
+<% provide :page_title, "Редактировать" %>
+<%= stylesheet_link_tag	'profile_styles', media: 'all', 'data-turbolinks-track' => true %>
 
-<%= render 'shared/errors', object: @user %>
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-12 col-xl-11">
-        <div class="card text-black" style="border-radius: 25px;">
-          <div class="card-body p-md-5">
-            <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Редактировать</p>
-
-                <%= form_with model: @user, data: { turbo: false } do |form| %>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fa-solid fa-user fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <%= form.text_field :name, required: true, minlength: 3  , placeholder: 'Иван Иванов', class: "form-control" %>
-                      <%= form.label :name, "Имя пользователя: " %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fa-solid fa-envelope fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <%= form.email_field :email, required: true, placeholder: 'ivan123@mail.ru', class: 'form-control' %>
-                      <%= form.label :email, "E-mail:" %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fa-solid fa-lock fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <%= form.password_field :password, class: 'form-control' %>
-                      <%= form.label :password, "Пароль:" %>
-                    </div>
-                  </div>
-
-                  <div class="d-flex flex-row align-items-center mb-4">
-                    <i class="fa-solid fa-key fa-lg me-3 fa-fw"></i>
-                    <div class="form-outline flex-fill mb-0">
-                      <%= form.password_field :password_confirmation, class: 'form-control' %>
-                      <%= form.label :password_confirmation, "Повторите пароль:" %>
-                    </div>
-                  </div>
-                  <div class="d-flex flex-row align-items-center mb-4">
-                      <div class="form-outline flex-fill mb-0">
-                          <%= form.password_field :old_password, class: 'form-control' %>
-                          <%= form.label :old_password, "Введите старый пароль:" %>
-                      </div>
-                  </div>
-
-                  <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <%= form.submit ("Сохранить"), class: "btn btn-primary btn-lg" %>
-                  </div>
-              <% end %>
-
-              </div>
-              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                  class="img-fluid" alt="Sample image">
-
-              </div>
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <span class="font-weight-bold"><%= @user.name %></span>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="col-md-7 border-right">
+            <%= form_with model: @user do |f| %>
+            
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h2 class="text-right">Редактировать профиль</h2>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <!--
+                            <label class="labels">Имя</label>
+                            <input type="text" class="form-control" placeholder="ToDo" value="">
+                            -->
+                            <%= f.label :name, 'Имя', class: "labels" %>
+                            <%= f.text_field :name, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :email, 'Адрес электронной почты', class: "labels" %>
+                            <%= f.text_field :email, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :place_of_work, 'Место работы', class: "labels" %>
+                            <%= f.text_field :place_of_work, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :education, 'Образование', class: "labels" %>
+                            <%= f.text_field :education, class: "form-control" %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.label :phone_number, 'Номер телефона', class: "labels" %>
+                            <%= f.text_field :phone_number, class: "form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="my-3 col-5 offset-4">
+                    <%= f.submit 'Сохранить изменения', class: 'btn btn-primary' %>
+                </div>
+            <% end %>
+        </div>
+
     </div>
-  </div>
-</section>
-
-
+    <!--
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="p-3 py-2 my-2 border border-danger rounded">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Сменить пароль</span></div><br>
+                <div class="col-md-12"><label class="labels">Старый пароль</label><input type="text" class="form-control"value=""></div>
+                <div class="col-md-12"><label class="labels">Новый пароль</label><input type="text" class="form-control"value=""></div>
+                <div class="col-md-12"><label class="labels">Подтвержение нового пароля</label><input type="text" class="form-control" value=""></div>
+                <div class="mt-2 text-center"><button class="btn btn-danger" type="button">Изменить</button></div>
+            </div>
+        </div>
+    </div>
+    -->
+</div>
