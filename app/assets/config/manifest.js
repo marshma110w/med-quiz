@@ -2,3 +2,4 @@
 //= link_tree ../builds
 //= link quiz-styles.css
 //= link rails-ujs.js
+ //= link profile_styles.css
