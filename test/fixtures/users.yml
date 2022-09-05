@@ -18,10 +18,10 @@
 #  index_users_on_email  (email) UNIQUE
 #
 
-one:
-  name: MyString
-  email: MyString
-
-two:
-  name: MyString
-  email: MyString
+#one:
+#  name: MyString
+#  email: MyString
+#
+#two:
+#  name: MyString
+#  email: MyString
