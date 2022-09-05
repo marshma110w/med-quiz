@@ -9,6 +9,7 @@
 #  password_digest :string
 #  phone_number    :string
 #  place_of_work   :string
+#  specialization  :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
